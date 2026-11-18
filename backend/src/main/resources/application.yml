@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: campus-market
+  datasource:
+    url: "${DB_URL:jdbc:mysql://127.0.0.1:3306/campus_market?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true}"
+    username: "${DB_USER:campus_market_app}"
+    password: "${DB_PASSWORD:}"
+    hikari:
+      connection-timeout: 3000
+  data:
+    redis:
+      host: "${REDIS_HOST:127.0.0.1}"
+      port: "${REDIS_PORT:6379}"
+      password: "${REDIS_PASSWORD:}"
+      timeout: 2s
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    arg-name-based-constructor-auto-mapping: true
+
+server:
+  port: "${SERVER_PORT:8080}"

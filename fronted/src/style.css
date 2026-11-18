@@ -1,0 +1,101 @@
+:root {
+  color: #1c2922;
+  background: #f7f8f3;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button { font: inherit; }
+
+.shell {
+  width: min(100% - 2rem, 70rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #e3e8df;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  min-height: 4rem;
+}
+
+.brand {
+  color: #244d38;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.market { padding-block: clamp(2rem, 5vw, 4rem); }
+
+.intro {
+  padding: clamp(1.5rem, 6vw, 4rem);
+  border-radius: 1.25rem;
+  background: #dbeade;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.intro p { margin: 0.75rem 0 0; }
+
+.catalog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block: 2.25rem 1rem;
+}
+
+.catalog-heading h2 { margin: 0; }
+
+.catalog-heading button {
+  border: 1px solid #adc2b0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  color: #244d38;
+  background: white;
+  cursor: pointer;
+}
+
+.catalog-heading button:hover:not(:disabled) { background: #e9f1e9; }
+.catalog-heading button:disabled { opacity: 0.6; cursor: wait; }
+
+.notice {
+  margin: 0;
+  padding: 1.5rem;
+  border: 1px dashed #c3cec1;
+  border-radius: 0.75rem;
+  color: #465749;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1rem;
+}
+
+.item {
+  padding: 1.25rem;
+  border: 1px solid #e3e8df;
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow-wrap: anywhere;
+}
+
+.category, .metadata, .price span { color: #506457; font-size: 0.875rem; }
+.category { margin: 0; }
+.item h3 { margin: 0.5rem 0; }
+.metadata { margin: 0; }
+.price { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 1rem; }
+.price strong { color: #245438; font-size: 1.3rem; }

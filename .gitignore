@@ -1,0 +1,8 @@
+fronted/node_modules/
+fronted/dist/
+backend/target/
+.idea/
+.vscode/
+*.iml
+.env
+.env.*
