@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => {
       host: '127.0.0.1',
       proxy: {
         '/api': backend,
+        '/ws': { target: backend, ws: true },
       },
     },
   }

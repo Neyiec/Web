@@ -10,5 +10,6 @@ public record CatalogItem(
         String conditionCode,
         String saleType,
         BigDecimal displayPrice,
-        boolean hasBids) {
+        boolean hasBids,
+        boolean hasImage) {
 }

@@ -1,8 +1,6 @@
-export async function getCatalog() {
-  const response = await fetch('/api/items', { headers: { Accept: 'application/json' } })
-  if (!response.ok) {
-    throw new Error('暂时无法读取商品，请稍后重试。')
-  }
+import { request } from './request'
 
-  return response.json()
+export function getCatalog(keyword = '', category = '') {
+  const params = new URLSearchParams({ keyword, category })
+  return request('/api/items?' + params)
 }

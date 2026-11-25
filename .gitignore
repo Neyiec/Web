@@ -1,6 +1,7 @@
 fronted/node_modules/
 fronted/dist/
 backend/target/
+backend/uploads/
 .idea/
 .vscode/
 *.iml

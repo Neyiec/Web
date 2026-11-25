@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,8 +19,9 @@ public class CatalogController {
     }
 
     @GetMapping("/api/items")
-    public List<CatalogItem> list() {
-        return catalogMapper.findRecentPublicItems();
+    public List<CatalogItem> list(@RequestParam(defaultValue = "") String keyword,
+                                  @RequestParam(defaultValue = "") String category) {
+        return catalogMapper.findRecentPublicItems(keyword.strip(), category);
     }
 
     @ExceptionHandler(DataAccessException.class)

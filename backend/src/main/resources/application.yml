@@ -1,6 +1,13 @@
 spring:
   application:
     name: campus-market
+  mvc:
+    problemdetails:
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
   datasource:
     url: "${DB_URL:jdbc:mysql://127.0.0.1:3306/campus_market?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true}"
     username: "${DB_USER:campus_market_app}"
@@ -13,6 +20,35 @@ spring:
       port: "${REDIS_PORT:6379}"
       password: "${REDIS_PASSWORD:}"
       timeout: 2s
+  kafka:
+    bootstrap-servers: "${KAFKA_BOOTSTRAP_SERVERS:127.0.0.1:9092}"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        "[spring.json.add.type.headers]": false
+        "[max.block.ms]": 1000
+    consumer:
+      group-id: "${KAFKA_CONSUMER_GROUP:campus-market-auction}"
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        "[spring.deserializer.value.delegate.class]": org.springframework.kafka.support.serializer.JsonDeserializer
+        "[spring.json.use.type.headers]": false
+        "[spring.json.value.default.type]": com.campusmarket.auction.AuctionSettledEvent
+
+app:
+  auth:
+    jwt-secret: "${APP_JWT_SECRET:}"
+  images:
+    directory: "${ITEM_IMAGE_DIR:uploads}"
+  kafka:
+    enabled: ${APP_KAFKA_ENABLED:false}
+    auction-settled-topic: "${KAFKA_AUCTION_SETTLED_TOPIC:auction.settled}"
+  auction-settlement:
+    enabled: ${APP_AUCTION_SETTLEMENT_ENABLED:true}
+    poll-interval: "${AUCTION_SETTLEMENT_INTERVAL:5s}"
 
 mybatis:
   configuration:
